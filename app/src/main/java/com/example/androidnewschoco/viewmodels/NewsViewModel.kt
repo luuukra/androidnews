@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.androidnewschoco.data.repository.NewsRepository
 import com.example.androidnewschoco.models.NewsResponse
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class NewsViewModel(
@@ -12,17 +13,14 @@ class NewsViewModel(
 ) : ViewModel() {
 
     val news: MutableLiveData<NewsResponse> = MutableLiveData()
-    var newsPage = 1
-    var newsResponse: NewsResponse? = null
 
     init {
-        getNews("android")
+        getNews()
     }
 
-    private fun getNews(topicKey: String) = viewModelScope.launch {
-        val response = newsRepository.getNews(topicKey, newsPage)
+    private fun getNews() = viewModelScope.launch(Dispatchers.IO) {
+        val response = newsRepository.getNews()
         news.postValue(response.body())
-
     }
 }
 

@@ -12,20 +12,21 @@ import javax.inject.Inject
 
 class NewsActivity : AppCompatActivity() {
 
+    private lateinit var binding : ActivityNewsBinding
+
     @Inject
     lateinit var viewModelFactory: NewsViewModelProviderFactory
-
-    lateinit var binding : ActivityNewsBinding
     lateinit var viewModel: NewsViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityNewsBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        setupViewModel()
+    }
 
-        (applicationContext as NewsApplication).appComponent.inject(this)
-
-        val newsRepository = NewsRepository()
-        viewModel = ViewModelProvider(this, viewModelFactory).get(NewsViewModel::class.java)
+    private fun setupViewModel() {
+        (applicationContext as NewsApplication).appComponent.injectActivity(this)
+        viewModel = ViewModelProvider(this, viewModelFactory)[NewsViewModel::class.java]
     }
 }

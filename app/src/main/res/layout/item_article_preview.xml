@@ -27,7 +27,8 @@
             app:layout_constraintHorizontal_bias="0.8"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.0"
+            tools:ignore="ImageContrastCheck" />
 
         <TextView
             android:id="@+id/tvTitle"
@@ -36,7 +37,7 @@
             android:fontFamily="@font/gilroy_bold"
             android:foregroundGravity="center"
             android:gravity="center"
-            android:text="Title"
+            android:text="@string/mock_title"
             android:textColor="@android:color/black"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -52,7 +53,7 @@
             android:layout_height="wrap_content"
             android:paddingHorizontal="10sp"
             android:fontFamily="@font/gilroy_light"
-            android:text="This is a description"
+            android:text="@string/mock_desc"
             android:textColor="@android:color/darker_gray"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -70,7 +71,7 @@
             android:layout_marginBottom="10sp"
             android:fontFamily="@font/gilroy_light"
             android:gravity="end"
-            android:text="This is a date"
+            android:text="@string/mock_date"
             android:textColor="@android:color/darker_gray"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"

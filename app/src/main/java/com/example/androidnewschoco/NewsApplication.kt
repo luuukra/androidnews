@@ -11,11 +11,13 @@ class NewsApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        setupDagger()
+    }
 
+    private fun setupDagger() {
         appComponent = DaggerAppComponent
             .builder()
             .appModules(AppModules(context = this))
             .build()
-
     }
 }
